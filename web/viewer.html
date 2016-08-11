@@ -54,7 +54,12 @@ See https://github.com/adobe-type-tools/cmap-resources
 
 <!--#if !PRODUCTION-->
     <script src="../node_modules/requirejs/require.js"></script>
-<!--#endif-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+
+
+    <!--#endif-->
 
 <!--#if (GENERIC && !MINIFIED) -->
 <!--#include viewer-snippet.html-->
@@ -370,5 +375,30 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--#if !(FIREFOX || MOZCENTRAL)-->
 <!--#include viewer-snippet-mozPrintCallback-polyfill.html-->
 <!--#endif-->
+    <!--Quezx Hack to show skills in PDF and reset scroll position-->
+  <script type="text/javascript">
+    $("#viewer").css("visibility","hidden");
+    $("#pageNumber").css("visibility","hidden");
+    function waitForElement(elementPath, callBack){
+      window.setTimeout(function(){
+        if($(elementPath).length){
+          callBack(elementPath, $(elementPath));
+        }else{
+          waitForElement(elementPath, callBack);
+        }
+      },1000)
+    }
+
+      waitForElement("#firstPage",function(){
+        waitForElement(".textLayer",function(){
+          window.setTimeout(function() {
+            document.getElementById("firstPage").click();
+            $("#viewer").css("visibility","visible");
+            $("#pageNumber").css("visibility","visible");
+          },400)
+
+        });
+      });
+  </script>
   </body>
 </html>

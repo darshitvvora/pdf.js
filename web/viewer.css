@@ -1939,3 +1939,59 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
     display: none;
   }
 }
+#toolbarViewer{
+  background-color: slategrey;
+}
+#mainContainer{
+  background-color: white;
+}
+#openFile{
+  display: none !important;
+}
+#print{
+  display: block !important;
+}
+#download{
+  display: none !important;
+}
+#documentProperties{
+  display: none !important;
+}
+#sidebarContainer{
+  background-color: #a8b5c1;
+}
+#toolbarSidebar{
+  background-image: url(images/texture.png), linear-gradient(slategrey, slategrey);
+}
+
+/*
+ *  STYLE 3
+ */
+
+#viewerContainer::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+#viewerContainer::-webkit-scrollbar
+{
+  width: 4px;
+  background-color: #F5F5F5;
+}
+
+#viewerContainer::-webkit-scrollbar-thumb
+{
+  background-color: #555;
+}
+
+#findbar{
+  background-image: url(images/texture.png), linear-gradient(slategrey, slategrey);
+}
+.dropdownToolbarButton > select > option {
+  background: slategrey;
+}
+
+#secondaryToolbar{
+  background-image: url(images/texture.png), linear-gradient(slategrey, slategrey);
+}

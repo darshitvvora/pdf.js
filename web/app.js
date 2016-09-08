@@ -269,7 +269,7 @@ var PDFViewerApplication = {
       new PDFDocumentProperties(appConfig.documentProperties);
 
     this.secondaryToolbar =
-      new SecondaryToolbar(appConfig.secondaryToolbar, eventBus);
+      new SecondaryToolbar(appConfig.secondaryToolbar, container, eventBus);
 
     if (this.supportsFullscreen) {
       this.pdfPresentationMode = new PDFPresentationMode({
@@ -1818,10 +1818,6 @@ function webViewerResize() {
     }
     PDFViewerApplication.pdfViewer.update();
   }
-
-  // Set the 'max-height' CSS property of the secondary toolbar.
-  var mainContainer = PDFViewerApplication.appConfig.mainContainer;
-  PDFViewerApplication.secondaryToolbar.setMaxHeight(mainContainer);
 }
 
 window.addEventListener('hashchange', function webViewerHashchange(evt) {
@@ -1905,10 +1901,6 @@ function webViewerLocalized() {
       container.setAttribute('style', 'min-width: ' + width + 'px; ' +
                                       'max-width: ' + width + 'px;');
     }
-
-    // Set the 'max-height' CSS property of the secondary toolbar.
-    var mainContainer = PDFViewerApplication.appConfig.mainContainer;
-    PDFViewerApplication.secondaryToolbar.setMaxHeight(mainContainer);
   });
 }
 

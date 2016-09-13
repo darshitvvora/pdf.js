@@ -1995,3 +1995,7 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
 #secondaryToolbar{
   background-image: url(images/texture.png), linear-gradient(slategrey, slategrey);
 }
+.textLayer .highlight{
+  margin: -5px !important;
+  padding: 5px !important;
+}

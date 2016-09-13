@@ -177,7 +177,7 @@ var PDFFindController = (function PDFFindControllerClosure() {
       query, pageIndex, pageContent) {
       var matchesWithLength = [];
       // Divide the query into pieces and search for text on each piece.
-      var queryArray = query.match(/\S+/g);
+      var queryArray = query.split("$|$");
       var subquery, subqueryLen, matchIdx;
       for (var i = 0, len = queryArray.length; i < len; i++) {
         subquery = queryArray[i];
@@ -214,6 +214,7 @@ var PDFFindController = (function PDFFindControllerClosure() {
       var caseSensitive = this.state.caseSensitive;
       var phraseSearch = this.state.phraseSearch;
       var queryLen = query.length;
+      var that = this;
 
       if (queryLen === 0) {
         // Do nothing: the matches should be wiped out already.
@@ -225,11 +226,14 @@ var PDFFindController = (function PDFFindControllerClosure() {
         query = query.toLowerCase();
       }
 
-      if (phraseSearch) {
-        this.calcFindPhraseMatch(query, pageIndex, pageContent);
-      } else {
+     // if (phraseSearch) {
+
+      // QuezX implementation of multiple phrase search [DV]
+    //    that.calcFindPhraseMatch(q, pageIndex, pageContent);
+
+     //} else {
         this.calcFindWordMatch(query, pageIndex, pageContent);
-      }
+    //  }
 
       this.updatePage(pageIndex);
       if (this.resumePageIdx === pageIndex) {
